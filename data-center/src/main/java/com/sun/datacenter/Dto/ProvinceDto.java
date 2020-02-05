@@ -1,4 +1,4 @@
-package com.sun.provincecenter.dto;
+package com.sun.datacenter.Dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,5 +20,4 @@ public class ProvinceDto {
     private int id;
     private String provinceName;
     private String preProvinceName;
-    private List<CityDto> cityDtoList;
 }

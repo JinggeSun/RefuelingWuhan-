@@ -24,4 +24,9 @@ public interface DataService {
      * @return
      */
     LatestInfoDto getLatestInfo();
+
+    /**
+     * test
+     */
+    void getProvinceInfo();
 }

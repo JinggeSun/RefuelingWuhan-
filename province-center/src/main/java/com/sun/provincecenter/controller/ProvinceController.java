@@ -10,10 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -34,6 +31,11 @@ public class ProvinceController {
             throw new ProvinceException(ResultEnums.PARAM_ERROR);
         }
         return ResultVOUtil.getSuccess(provinceService.getProvinceById(id));
+    }
+
+    @GetMapping("/all")
+    public ResultVO<Object> getAll(){
+        return ResultVOUtil.getSuccess(provinceService.getAll());
     }
 
 }

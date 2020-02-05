@@ -1,8 +1,8 @@
 spring:
   application:
-    name: province-center
+    name: zuul-center
   cloud:
     config:
-      name: province-center
+      name: zuul-center
       uri: http://localhost:8888/
       profile: dev

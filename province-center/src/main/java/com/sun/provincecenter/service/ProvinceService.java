@@ -2,6 +2,8 @@ package com.sun.provincecenter.service;
 
 import com.sun.provincecenter.dto.ProvinceDto;
 
+import java.util.List;
+
 /**
  * @author zcm
  */
@@ -13,4 +15,10 @@ public interface ProvinceService {
      * @return dto
      */
     ProvinceDto getProvinceById(Integer id);
+
+    /**
+     * 获取所有省份信息
+     * @return
+     */
+    List<ProvinceDto> getAll();
 }

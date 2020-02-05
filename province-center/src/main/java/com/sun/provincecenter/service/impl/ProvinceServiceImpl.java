@@ -12,6 +12,7 @@ import com.sun.provincecenter.mapper.ProvinceMapper;
 import com.sun.provincecenter.service.ProvinceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,5 +49,15 @@ public class ProvinceServiceImpl implements ProvinceService {
         }).collect(Collectors.toList());
 
         return ProvinceDto.builder().id(province.getId()).provinceName(province.getProvinceName()).cityDtoList(cityDtoList).build();
+    }
+
+    @Override
+    public List<ProvinceDto> getAll() {
+        List<Province> provinceList = provinceMapper.selectList(new QueryWrapper<>());
+        return provinceList.stream().map(province -> {
+            ProvinceDto provinceDto = new ProvinceDto();
+            BeanUtils.copyProperties(province,provinceDto);
+            return provinceDto;
+        }).collect(Collectors.toList());
     }
 }
