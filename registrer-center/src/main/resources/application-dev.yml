@@ -3,9 +3,20 @@ server:
 spring:
   application:
     name: eureka-server
+  security:
+    user:
+      name: admin
+      password: 123456
 eureka:
+  instance:
+    prefer-ip-address: false
+    hostname: e-1
   client:
     service-url:
-      defaultZone: http://localhost:${server.port}/eureka/
-  server:
-    enable-self-preservation: false
+      defaultZone: http://admin:123456@e-2:8762/eureka/
+    # 向自己注册
+    register-with-eureka: true
+  #server:
+    # 自我保护机制
+    #enable-self-preservation: false
+    fetch-registry: true

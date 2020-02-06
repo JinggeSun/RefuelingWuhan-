@@ -1,0 +1,14 @@
+docker run --name cloud_svn -p 3380:80 -p 3690:3960-e SVN_REPONAME=repos -d docker.io/elleflorio/svn-server
+
+
+
+docker exec -t colud_svn htpasswd -b /etc/subversion/passwd sjg sjg
+
+
+
+docker run --restart always --name svn -d -v /Users/zcm/Documents/project/svn:/var/opt/svn -p 3690:3690 garethflowers/svn-server
+/Users/zcm/Documents/project/svn
+
+
+
+docker run -v /Users/zcm/Documents/project/svn:/home/svn --name cloud-svn -p 3380:80 -p 3690:3960 -e SVN_REPONAME=repos -d docker.io/elleflorio/svn-server
