@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: myclient-server
+server:
+  port: 9091
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://admin:123456@:e-1:8761/eureka/,http://admin:123456@:e-2:8762/eureka/

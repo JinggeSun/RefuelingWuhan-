@@ -26,7 +26,7 @@ public interface DataService {
     LatestInfoDto getLatestInfo();
 
     /**
-     * test
+     * 获取省份疫情信息
      */
     void getProvinceInfo();
 }

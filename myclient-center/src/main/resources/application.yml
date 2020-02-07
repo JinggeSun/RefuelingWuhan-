@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: myclient-center
+  cloud:
+    config:
+      name: myclient-center
+      uri: http://localhost:8888/
+      profile: dev

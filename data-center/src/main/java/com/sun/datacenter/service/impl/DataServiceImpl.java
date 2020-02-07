@@ -1,10 +1,7 @@
 package com.sun.datacenter.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.sun.datacenter.Dto.AllInfoDto;
-import com.sun.datacenter.Dto.HistoryInfoDto;
-import com.sun.datacenter.Dto.LatestInfoDto;
-import com.sun.datacenter.Dto.ProvinceInfoDto;
+import com.sun.datacenter.Dto.*;
 import com.sun.datacenter.VO.ResultVO;
 import com.sun.datacenter.client.ProvinceClient;
 import com.sun.datacenter.entity.HistoryInfo;
@@ -66,12 +63,25 @@ public class DataServiceImpl implements DataService {
         List<ProvinceInfoDto> provinceInfoDtoList = provinceInfoList.stream().map(provinceInfo -> {
             ProvinceInfoDto provinceInfoDto = new ProvinceInfoDto();
             BeanUtils.copyProperties(provinceInfo,provinceInfoDto);
+            provinceInfoDto.setProvinceName(provinceInfo.getProvinceId().toString());
             return provinceInfoDto;
         }).collect(Collectors.toList());
 
+        /**
+         * ResultVO(code=200, message=success, object=[{id=172, provinceName=湖北, preProvinceName=湖北省, cityDtoList=null},
+         */
         ResultVO<Object> resultVO = provinceClient.getAll();
+        List<ProvinceDto> provinceDtoList = (List<ProvinceDto>) resultVO.getObject();
 
-        System.out.println(resultVO);
+        for (ProvinceInfoDto provinceInfoDto : provinceInfoDtoList){
+            for (ProvinceDto provinceDto : provinceDtoList){
+                if (provinceInfoDto.getProvinceName().equals(provinceDto.getId()+"")){
+                    provinceInfoDto.setProvinceName(provinceDto.getProvinceName());
+                }
+            }
+        }
+
+        System.out.println(provinceInfoDtoList);
 
     }
 }

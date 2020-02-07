@@ -22,6 +22,10 @@ public class DataController {
 
     private final DataService dataService;
 
+    /**
+     * 获取最新的数据
+     * @return
+     */
     @GetMapping("/latest")
     public ResultVO<Object> getLatest(){
         return ResultVOUtil.getSuccess(dataService.getLatestInfo());
@@ -32,8 +36,8 @@ public class DataController {
         return ResultVOUtil.getSuccess(dataService.getDataInfo(startTime,endTime));
     }
 
-    @GetMapping("/test")
-    public String  test(){
+    @GetMapping("/provinceInfo")
+    public String  getProvinceInfo(){
         dataService.getProvinceInfo();
         return "success";
     }
